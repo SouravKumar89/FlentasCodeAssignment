@@ -1,0 +1,39 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="float:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  <p>
+    <input type="number" [(ngModel)]="testCase" placeholder="test cases number">
+  </p>
+    <div><button (click)="submitTestCase()">Enter Test Cases</button></div>
+    <br>
+    <div>Test Cases: {{testCaseNumber}}</div>
+    <br>
+    <div *ngIf="testCaseNumber > 0">
+      <div class="row" *ngFor="let num of getnumberArray(testCaseNumber); let i= index">
+        {{i+1}}
+        <br>
+        <input type="number" [(ngModel)]="persNum[i]" placeholder="Enter Person number">&nbsp;
+        <button (click)="submitPerson(i)">Enter Person number</button>
+        <br><br>
+        <div *ngIf="personNumber[i]>0">
+          <input type="number" [(ngModel)]="persCost[i]" placeholder="Enter Persons Cost">&nbsp;
+          <button (click)="submitCost(i)">Enter Persons Cost</button>
+          <br>
+          <div>Number Of People : {{personNumber[i]}}</div>
+          <span *ngIf="costs[i]&&costs[i].length> 0">Cost Of People:</span>
+          <span *ngFor="let cost of costs[i]">{{cost}}&nbsp;</span>
+        </div>
+        <br>
+      </div>
+      <br>
+      <br>
+      <button (click)="GetResult()">Submit</button>
+      <button (click)="Refresh()">Refresh</button>
+    </div>
+    <div *ngIf="Results.length > 0 ">
+      OUTPUT:
+      <div *ngFor="let result of Results">{{result}}</div>
+    </div>
+</div>
